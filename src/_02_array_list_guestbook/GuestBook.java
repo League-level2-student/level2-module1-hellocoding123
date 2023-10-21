@@ -12,12 +12,12 @@ import javax.swing.JPanel;
 
 import _01_array_list_visualizer.data.ArrayList;
 
-public class GuestBook implements MouseListener {
+public class GuestBook implements ActionListener {
 	JFrame frame;
 	JPanel panel;
 	JButton button1;
 	JButton button2;
-	ArrayList<String> list;
+	ArrayList<String> list= new ArrayList<String>();
 	
 	
 	public GuestBook() {
@@ -41,46 +41,25 @@ public class GuestBook implements MouseListener {
 		list.add("Guest #2: Sandy Summers");
 		list.add("Guest #3: Greg Ganders");
 		list.add("Guest #4: Donny Doners");
-		button1.addMouseListener(this);
-		button2.addMouseListener(this);
+		button1.addActionListener(this);
+		button2.addActionListener(this);
 		frame.setVisible(true);
 		
 	}
-	
-	
+
+
 	@Override
-	public void mouseClicked(MouseEvent e) {
+	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		list = new ArrayList<String>();
-		if(e.equals(button1)) {
+		if(e.getSource() == button1) {
 			String answer = JOptionPane.showInputDialog("What name do you want to add to the guest list?");
-			list.add("Guest "+(list.size()+1)+": "+answer);
+			list.add("Guest #"+(list.size()+1)+": "+answer);
 		}
-		else if(e.equals(button2)) {
+		else if(e.getSource() == button2) {
 			for(int i=0;i<list.size();i++) {
-				System.out.println(list.get(i+1));
+				System.out.println(list.get(i));
 			}
 		}
 	}
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 		
-	}
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 }
